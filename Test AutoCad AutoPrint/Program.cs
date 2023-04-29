@@ -6,15 +6,23 @@ namespace AutoCADBatchPlotter
     {
         static async Task Main(string[] args)
         {
-            string folderPath = @"C:\Users\johnn\OneDrive\Skrivebord\MSG";
+            string masterPath = @"C:\Test for Autocad greier\P-10001";
+            string DWGPath = $@"{masterPath}\DWG";
+            string PDFPath = $@"{masterPath}\PDF";
 
-            if (!Directory.Exists(folderPath))
+            if (!Directory.Exists(DWGPath))
             {
+                Console.WriteLine(DWGPath);
                 Console.WriteLine("The provided folder path does not exist.");
                 return;
             }
 
-            string[] dwgFiles = Directory.GetFiles(folderPath, "*.dwg");
+            if (!Directory.Exists(PDFPath))
+            {
+                Directory.CreateDirectory(PDFPath);
+            }
+
+            string[] dwgFiles = Directory.GetFiles(DWGPath, "*.dwg");
 
             if (dwgFiles.Length == 0)
             {
@@ -48,7 +56,7 @@ namespace AutoCADBatchPlotter
                                 Console.WriteLine($"Opening {dwgFile}...");
                                 dynamic doc = acadApp.Documents.Open(dwgFile, false);
 
-                                string outputFileName = Path.ChangeExtension(dwgFile, "pdf");
+                                string outputFileName = Path.Combine(PDFPath, Path.GetFileNameWithoutExtension(dwgFile) + ".pdf");
                                 Console.WriteLine($"Publishing {outputFileName}...");
 
                                 // Publish the drawing using default settings
