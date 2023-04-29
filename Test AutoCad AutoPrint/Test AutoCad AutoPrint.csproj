@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net7.0</TargetFramework>
+    <RootNamespace>Test_AutoCad_AutoPrint</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="accoremgd">
+      <HintPath>..\..\..\..\..\..\Program Files\Autodesk\AutoCAD 2022\accoremgd.dll</HintPath>
+    </Reference>
+    <Reference Include="Acdbmgd">
+      <HintPath>..\..\..\..\..\..\Program Files\Autodesk\AutoCAD 2022\acdbmgd.dll</HintPath>
+    </Reference>
+    <Reference Include="Acmgd">
+      <HintPath>..\..\..\..\..\..\Program Files\Autodesk\AutoCAD 2022\acmgd.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
